@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poetry and Science Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Your Poetry and Science Hub</h1>
+        <div id="datetime"></div>
+        <div>
+            <button onclick="openLogin('admin')">Admin Login</button>
+            <button onclick="openLogin('user')">User Login</button>
+        </div>
+    </header>
+    <main>
+        <h2>Content</h2>
+        <div id="content"></div>
+    </main>
+    <footer>
+        <p>Support me: <a href="tel:+254746415264">+254746415264</a></p>
+    </footer>
+    
+    <!-- Admin/User login modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="loginTitle"></h2>
+            <input type="password" id="loginPassword" placeholder="Enter password" required>
+            <button onclick="validateLogin()">Login</button>
+        </div>
+    </div>
+
+    <!-- Admin dashboard -->
+    <div id="dashboard" style="display:none;">
+        <h3>Admin Dashboard</h3>
+        <button onclick="toggleUploadForm()">Upload Content</button>
+        <div id="uploadForm" style="display:none;">
+            <h4>Upload New Content</h4>
+            <input type="file" id="fileInput" multiple>
+            <input type="text" id="contentType" placeholder="Type (poetry, video, etc.)" required>
+            <button onclick="uploadContent()">Upload</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Real-time clock for EAT
+        function updateDateTime() {
+            const now = new Date();
+            const options = { timeZone: 'Africa/Nairobi', hour12: false };
+            const formattedDate = now.toLocaleString('en-US', options);
+            document.getElementById('datetime').innerText = formattedDate;
+        }
+        setInterval(updateDateTime, 1000);
+    </script>
+</body>
+</html>
